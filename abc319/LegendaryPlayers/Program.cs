@@ -21,7 +21,6 @@ namespace ConsoleApp
             PlayersList.Add(new PlayersScore("semiexp", 3481));
 
             string s = Console.ReadLine();
-
             int result = PlayersList.Where(r => r.PlayerName == s).Select(r => r.Score).FirstOrDefault();
 
             Console.WriteLine(result);
