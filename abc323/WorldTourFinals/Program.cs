@@ -7,8 +7,8 @@ namespace ConsoleApps
     {
         static void Main(string[] args)
         {
-            string[] array = Console.ReadLine().Split(' ');
-            int n = int.Parse(array[0]);
+            string[] nm = Console.ReadLine().Split(' ');
+            int n = int.Parse(nm[0]);
             string[] pointArray = Console.ReadLine().Split(' ');
             int[] intPointArray = Array.ConvertAll(pointArray, int.Parse);
 
