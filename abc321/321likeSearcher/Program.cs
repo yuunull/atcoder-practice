@@ -9,8 +9,8 @@ namespace ConsoleApp1
         {
             int k = int.Parse(Console.ReadLine());
 
-            List<int> likeArray = new List<int>();
-            for (int i = 1; i <= 987654321; i++)
+            List<long> likeArray = new List<long>();
+            for (long i = 1; i <= 987654321; i++)
             {
                 bool is321LikeNumber = true;
                 char[] charArray = i.ToString().ToCharArray();
@@ -26,11 +26,10 @@ namespace ConsoleApp1
                 if (is321LikeNumber)
                 {
                     likeArray.Add(i);
-                }
-
-                if (likeArray.Count() > k)
-                {
-                    break;
+                    if (likeArray.Count() > k)
+                    {
+                        break;
+                    }
                 }
             }
 
