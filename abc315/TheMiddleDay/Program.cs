@@ -10,7 +10,6 @@ namespace ConsoleApp1
             int m = int.Parse(Console.ReadLine());
             string[] d = Console.ReadLine().Split();
 
-
             int[] array = new int[m];
             for (int i = 0; i < m; i++) 
             {
