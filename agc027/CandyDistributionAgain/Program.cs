@@ -14,18 +14,24 @@ namespace ConsoleApp
             int[] array = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
             Array.Sort(array);
 
+            int sum = 0;
             int cnt = 0;
             for (int j = 0; j < array.Length; j++)
             {
-                x -= array[j];
-                if (x >= 0)
+                if (sum + array[j] <= x)
                 {
+                    sum += array[j];
                     cnt++;
                 }
                 else
                 {
                     break;
                 }
+            }
+
+            if (cnt == n && sum < x)
+            {
+                cnt--;
             }
 
             Console.WriteLine(cnt);
