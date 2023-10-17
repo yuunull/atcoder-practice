@@ -16,15 +16,20 @@ namespace ConsoleApp
             int b = int.Parse(bw[0]);
             int w = int.Parse(bw[1]);
 
+            int s = Math.Abs(a - b);
+            int c = v - w;
+
             bool isCatch = false;
-            for (int i = 0; i < t; i++)
+            if(c > 0)
             {
-                a += v;
-                b += w;
-                if (a >= b)
+                for (int i = 0; i < t; i++)
                 {
-                    isCatch = true;
-                    break;
+                    s -= c;
+                    if (s <= 0)
+                    {
+                        isCatch = true;
+                        break;
+                    }
                 }
             }
 
