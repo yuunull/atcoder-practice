@@ -10,22 +10,49 @@ class Program
         int b = int.Parse(Console.ReadLine());
         int c = int.Parse(Console.ReadLine());
         int x = int.Parse(Console.ReadLine());
+
+        int[] choices = new int[a + b + c];
+        for(int i = 0; i < a; i++)
+        {
+            choices[i] = 500;
+        }
+
+        for(int i = a; i < a + b; i++)
+        {
+            choices[i] = 100;
+        }
+
+        for(int i = a + b; i < a + b + c; i++)
+        {
+            choices[i] = 50;
+        }
+
+        int count = 0;
+        List<int> currentCombination = new List<int>();
+        DFS(0, x, choices, currentCombination, count);
         
-        Console.WriteLine(CountWaysToMakeAmount(a, b, c, x));
+        Console.WriteLine(count);
     }
 
-    static int CountWaysToMakeAmount(int a, int b, int c, int x)
+    static void DFS(int currentNumber, int targetNumber, int[] choices, List<int> currentCombination, int count)
     {
-        if (x == 0) return 1;
+        if (currentNumber == targetNumber)
+        {
+            count++;
+            return;
+        }
 
-        if (x < 0 || (a == 0 && b == 0 && c == 0)) return 0;
+        if (choices.Length == 0 || currentNumber > targetNumber)
+        {
+            return;
+        }
 
-        int ways = 0;
-
-        if (a > 0) ways += CountWaysToMakeAmount(a - 1, b, c, x - 500);
-        if (b > 0) ways += CountWaysToMakeAmount(a, b - 1, c, x - 100);
-        if (c > 0) ways += CountWaysToMakeAmount(a, b, c - 1, x - 50);
-
-        return ways;
+        for (int i = 0; i < choices.Length; i++)
+        {
+            int choice = choices[i];
+            currentCombination.Add(choice);
+            DFS(currentNumber + choice, targetNumber, choices[i..], currentCombination, count);
+            currentCombination.RemoveAt(currentCombination.Count - 1);
+        }
     }
 }
