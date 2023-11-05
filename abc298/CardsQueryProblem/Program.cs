@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>
-///  TLEする改善すること
-/// </summary>
 class Program
 {
     public static void Main()
@@ -12,10 +9,12 @@ class Program
         int n = int.Parse(Console.ReadLine());
         int q = int.Parse(Console.ReadLine());
         
-        List<List<int>> resultList = new List<List<int>>();
-        for (int i = 0; i < n; i++)
+        var cardList = new SortedSet<int>[200002];
+        var boxList = new List<int>[200002];
+        for (int i = 0; i < 200002; i++)
         {
-            resultList.Add(new List<int>());
+            cardList[i] = new SortedSet<int>();
+            boxList[i] = new List<int>();
         }
 
         for(int i = 0; i < q; i++)
@@ -24,23 +23,17 @@ class Program
             switch(query[0])
             {
                 case 1:
-                    resultList[query[2] - 1].Add(query[1]);
+                    cardList[query[1]].Add(query[2]);
+                    boxList[query[2]].Add(query[1]);
                     break;
                 
                 case 2:
-                    Console.WriteLine(string.Join(" ", resultList[query[1] - 1].OrderBy(r => r)));
+                    boxList[query[1]].Sort();
+                    Console.WriteLine(string.Join(" ", boxList[query[1]]));
                     break;
 
                 case 3:
-                    List<int> indices = new List<int>();
-                    for (int k = 0; k < resultList.Count(); k++)
-                    {
-                        if(resultList[k].Contains(query[1]))
-                        {
-                            indices.Add(k + 1);
-                        }
-                    }
-                    Console.WriteLine(string.Join(" ", indices.OrderBy(r => r)));
+                    Console.WriteLine(string.Join(" ", cardList[query[1]]));
                     break;
             }
         }
