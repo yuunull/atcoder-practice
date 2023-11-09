@@ -4,7 +4,6 @@ using System.Linq;
 
 class Program
 {
-    // 解けてない
     public static void Main()
     {
         int n = int.Parse(Console.ReadLine());
