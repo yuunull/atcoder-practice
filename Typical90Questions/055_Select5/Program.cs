@@ -10,20 +10,27 @@ class Program
         int n = int.Parse(npq[0]);
         int p = int.Parse(npq[1]);
         int q = int.Parse(npq[2]);
-        int[] a = Console.ReadLine().Split().Select(int.Parse).ToArray();
+        long[] a = Console.ReadLine().Split().Select(long.Parse).ToArray();
 
         int result = 0;
-        for(int i = 0; i < n - 5; i++)
-        {
-            long sum = 1;
-            for(int j = i; j < i + 5; j++)
+        for(int i = 0; i < n - 4; i++)
+        {           
+            for(int j = i + 1; j < n - 3; j++)
             {
-                sum *= a[j];
-            }
-            if(sum % p == q)
-            {
-                result++;
-            }
+                for (int k = j + 1; k < n - 2; k++)
+                {
+                    for (int l = k + 1; l < n - 1; l++)
+                    {
+                        for (int m = l + 1; m < n ; m++)
+                        {
+                            if (a[i]%p * a[j]%p * a[k]%p * a[l]%p * a[m]%p == q) 
+                            {
+                                result++;
+                            }
+                        }
+                    }                               
+                }
+            }                       
         }
         Console.WriteLine(result);
     }
