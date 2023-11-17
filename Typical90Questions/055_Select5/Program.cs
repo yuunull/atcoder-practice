@@ -4,6 +4,11 @@ using System.Linq;
 
 class Program
 {
+    /// <summary>
+    ///  以下を知らなかった。
+    ///  この性質は複数の数に拡張可能
+    ///  (a * b) mod p == (a mod p) * (b mod p)
+    /// </summary>
     public static void Main()
     {
         string[] npq = Console.ReadLine().Split();
