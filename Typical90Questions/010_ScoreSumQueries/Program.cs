@@ -20,7 +20,6 @@ class Program
             cp2[i + 1] = cp2[i];
 
             int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
-
             if ((input[0] % 2) > 0)
             {
                 cp1[i + 1] += input[1];
