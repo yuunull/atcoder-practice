@@ -8,8 +8,12 @@ class Program
 	{
         int[] abc = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
-        double log2a = Math.Log(abc[0], 2);
-        double bLogsc = Math.Log(abc[2], 2) * abc[1];
-        Console.WriteLine(log2a < bLogsc ? "Yes" : "No");
+        long c = 1;
+        for(int i = 0; i < abc[1]; i++)
+        {
+            c *= abc[2];
+        }
+        bool result = abc[0] < c;
+        Console.WriteLine(result ? "Yes" : "No");
 	}
 }
