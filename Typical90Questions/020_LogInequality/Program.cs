@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 class Program
 {
+    /// <summary>
+    ///  ・KlogaM = logaMk この式が成り立つ
+    /// </summary>
 	static void Main()
 	{
-        int[] abc = Console.ReadLine().Split().Select(int.Parse).ToArray();
+        long[] abc = Console.ReadLine().Split().Select(long.Parse).ToArray();
 
         long c = 1;
         for(int i = 0; i < abc[1]; i++)
